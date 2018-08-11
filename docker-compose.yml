@@ -11,6 +11,9 @@ services:
     build: ./turn
     environment:
       - FQDN=localhost
+      - UDP_PORT=3478
+      - USERS=username:password
+      - REALM=localhost
     ports:
      - "3478:3478/udp"
     volumes:
