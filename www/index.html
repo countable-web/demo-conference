@@ -12,9 +12,9 @@
     </div>
 
     <script src="https://webrtc.github.io/adapter/adapter-6.1.1.js"> </script>
-    <script src="https://rawgit.com/pions/pion-browser-client/master/index.js" type="module"> </script>
+    <script src="/pions.js" type="module"> </script>
     <script type="module">
-      import {PionSession, PionEvents} from 'https://rawgit.com/pions/pion-browser-client/master/index.js'
+      import {PionSession, PionEvents} from '/pions.js'
       const SIGNALER_URI = 'localhost:5001'
 
       let addRemoteVideo = media => {
