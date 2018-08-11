@@ -54,6 +54,11 @@
           iceServers: [
             {
               urls: 'stun:webrtc.countable.ca',
+            },
+            {
+              urls: "turn:webrtc.countable.ca",
+              username: "username",
+              credential: "password"
             }
           ],
           mandatory: {OfferToReceiveVideo: true, OfferToReceiveAudio: true}
