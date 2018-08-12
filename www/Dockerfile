@@ -2,6 +2,8 @@ FROM alpine:latest
 
 ENV GOPATH /usr/local
 
+RUN echo bust cache
+
 RUN apk --no-cache add go git musl-dev && rm -rf /var/cache/apk/*
 RUN go get -u github.com/m3ng9i/ran
 COPY *.pem /root/

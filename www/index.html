@@ -1,14 +1,60 @@
 <html>
   <head>
+    <title>Remote Appointment Demo</title>
+    <style>
+      *, *::after, *::before {
+        box-sizing: border-box;
+      }
+      .videos-wrap video {
+        max-width: 100%;
+      }
+      .videos-wrap {
+        display: flex;
+        overflow: hidden;
+      }
+      .videos-wrap>#localVideos {
+        flex: 1;
+        height: 100%;
+      }
+      .videos-wrap>#remoteVideos video {
+        height: 100%;
+      }
+      .videos-wrap>#remoteVideos {
+        flex: 3;
+        height: 100%;
+      }
+      #infoPane {
+        padding: 1em;
+      }
+      #toggleVideo {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+        z-index: 1000;
+      }
+
+
+    </style>
+    <link rel=stylesheet type='text/css' href='appointment.css'>
   </head>
   <body>
-    <button id="toggleVideo">
-      Toggle
-    </button>
 
-    <video id="localVideo" controls="true" muted="">
-    </video>
-    <div id="remoteVideos">
+    <button id="toggleVideo" class='primary small'>
+        disable cam
+    </button>
+    <div class="videos-wrap">
+      <div id="localVideos">
+        <video id="localVideo" controls="true" muted="">
+        </video>
+        <div id="infoPane">
+            <form>
+              <label for='notes'>Type chart notes here:</label>
+              <textarea name='notes'></textarea>
+            </form>
+          </div>
+      </div>
+      <div id="remoteVideos">
+      </div>
     </div>
 
     <script src="https://webrtc.github.io/adapter/adapter-6.1.1.js"> </script>
@@ -83,13 +129,17 @@
         let mutateLoop = () => {
           if (isAdded) {
             pionSession.removeMedia(localMediaStream)
+            $toggle.innerHTML = 'enable cam';
           } else {
             pionSession.addMedia(localMediaStream)
+            $toggle.innerHTML = 'disable cam';
+
           }
+          
           isAdded = !isAdded
         }
-
-        document.getElementById('toggleVideo').onclick = mutateLoop
+        let $toggle = document.getElementById('toggleVideo');
+        $toggle.onclick = mutateLoop
       },
       function(err) {
         console.log('The following error occurred when trying to use getUserMedia: ' + err);

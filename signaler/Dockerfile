@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+RUN echo bust cache
+
 ENV GOPATH /usr/local
 
 RUN apk --no-cache add go git musl-dev && rm -rf /var/cache/apk/*

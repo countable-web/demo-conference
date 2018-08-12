@@ -7,17 +7,6 @@ services:
       - "5001:443"
     volumes:
      - ./signaler:/usr/local/src/github.com/pions/demo-conference/signaler
-#  turn:
-#    build: ./turn
-#    environment:
-#      - FQDN=webrtc.countable.ca
-#      - UDP_PORT=3478
-#      - USERS=username:password
-#      - REALM=webrtc.countable.ca
-#    ports:
-#     - "3478:3478/udp"
-#    volumes:
-#     - ./turn:/usr/local/src/github.com/pions/demo-conference/turn
 
   turn:
     image: zolochevska/turn-server
